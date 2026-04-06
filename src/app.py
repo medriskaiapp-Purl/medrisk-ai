@@ -300,11 +300,14 @@ with st.sidebar:
 
     st.divider()
     st.markdown(
-        "**What's inside each analysis:**\n"
-        "- 12 standards auto-selected\n"
-        "- 18 hazard categories checked\n"
-        "- 6-point self-verification\n"
-        "- Physics-based, not generic"
+        "**What makes this different:**\n"
+        "- 12 standards auto-selected per device\n"
+        "- 6-point self-verification before delivery\n"
+        "- GSPR mapping (EU MDR)\n"
+        "- Audit readiness checklist\n"
+        "- Post-market monitoring plan\n"
+        "- CSV export for Excel / QMS import\n"
+        "- No prompt writing, no setup, no AI expertise needed"
     )
     st.caption("Your data is processed, not stored.")
 
