@@ -561,8 +561,8 @@ MedRisk AI was built by medical device professionals who understand both enginee
 """)
 
     st.divider()
-    col_cta1, col_cta2 = st.columns(2)
-    with col_cta1:
-        st.markdown(f"**Free:** {FREE_MAX_RISKS} risks per analysis. Try it now — no signup needed.")
-    with col_cta2:
-        st.markdown(f"**[Pro — $99/report]({PURCHASE_URL}):** Up to 25 risks + CSV/Markdown download.")
+    st.markdown(
+        f"**Try free** — {FREE_MAX_RISKS} risks, no signup.\n\n"
+        f"**[Pro — £79/report]({PURCHASE_URL})** — up to 25 risks + CSV/Markdown download + full GSPR + audit checklist.\n\n"
+        f"*Risk consultants charge £12,000-40,000 for the same analysis. MedRisk AI: £79, delivered in 60 seconds.*"
+    )
