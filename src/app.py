@@ -155,10 +155,10 @@ if not st.session_state.privacy_accepted:
 
 # --- Header ---
 st.title("MedRisk AI")
-st.caption("Your first ISO 14971 risk analysis in 10 minutes. Review, customize, import into your QMS.")
+st.markdown("**Save 3-6 months of risk management work.** Get your first ISO 14971 risk analysis in 10 minutes — audit-ready, multi-standard, self-verified.")
 
 # --- Sample Output (trust before trial) ---
-with st.expander("See a sample analysis (Pulse Oximeter)", expanded=False):
+with st.expander("See a sample analysis (Pulse Oximeter)", expanded=True):
     st.markdown("""**Risk 2: SpO2 Measurement Error — Missed Hypoxemia**
 
 **Risk ID:** RISK_02 | **Hazard:** Software/Diagnostic | **Subsystem:** Signal processing (PPG)
@@ -508,17 +508,15 @@ else:
     st.markdown("**Describe your device above, select subsystems, and click Generate.**")
 
     st.markdown("""
-    | What's included | |
+    | You get | So you can |
     |---|---|
-    | ISO 14971 risk analysis (device-specific, not templates) | Included |
-    | 12 standards auto-selected per device | Included |
-    | 6-point self-verification (physics, scoring, completeness) | Included |
-    | GSPR mapping (EU MDR Annex I) | Included |
-    | Audit readiness checklist (8 checks) | Included |
-    | Post-market monitoring plan | Included |
-    | CSV export for Excel / QMS import | Pro |
-    | Markdown report download | Pro |
-    | No prompt writing, no setup needed | Included |
+    | Device-specific risk analysis (not templates) | Start with real hazards, not blank page |
+    | 12 standards auto-selected | Stop looking up which standards apply |
+    | 6-point self-verification | Trust the numbers before your auditor sees them |
+    | GSPR mapping (EU MDR) | Show Annex I compliance without manual cross-referencing |
+    | Audit readiness checklist | Know exactly what's missing before submission |
+    | Post-market monitoring plan | Have your PMS framework ready, not an afterthought |
+    | CSV + Markdown export (Pro) | Import directly into Excel or your QMS |
     """)
 
     with st.expander("FAQ", expanded=False):
