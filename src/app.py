@@ -136,15 +136,13 @@ if "privacy_accepted" not in st.session_state:
 
 if not st.session_state.privacy_accepted:
     st.title("MedRisk AI")
-    st.warning(
-        "**Privacy Notice**\n\n"
-        "MedRisk AI sends your device description to the Claude AI API (Anthropic) for analysis. "
-        "Your data is processed but **not stored** by Anthropic or MedRisk AI after the response is generated.\n\n"
-        "- Do NOT include patient names, personal data, or confidential trade secrets in your device description\n"
-        "- Device descriptions are used solely to generate your risk analysis\n"
-        "- No data is shared with third parties beyond the AI processing\n\n"
-        "By clicking Accept, you agree to these terms.\n\n"
-        "Questions? Contact medrisk.ai.app@gmail.com"
+    st.markdown(
+        "**Before you start**\n\n"
+        "MedRisk AI uses artificial intelligence to analyze your device description and generate "
+        "a risk analysis. Your data is processed in real-time and **not stored** after the report is generated.\n\n"
+        "- Do not include patient names or personally identifiable information\n"
+        "- Device descriptions are used solely to generate your analysis\n\n"
+        "By continuing, you agree to these terms. Contact: medrisk.ai.app@gmail.com"
     )
     if st.button("Accept and Continue", type="primary"):
         st.session_state.privacy_accepted = True
