@@ -138,8 +138,12 @@ if not st.session_state.privacy_accepted:
     st.title("MedRisk AI")
     st.markdown(
         "**Before you start**\n\n"
-        "MedRisk AI uses artificial intelligence to analyze your device description and generate "
-        "a risk analysis. Your data is processed in real-time and **not stored** after the report is generated.\n\n"
+        "MedRisk AI is a purpose-built risk analysis engine configured with "
+        "12 regulatory standards (ISO 14971, IEC 60601, IEC 62304, and 9 more), "
+        "18 hazard categories, and a 6-point self-verification system. "
+        "Every analysis is checked for physics accuracy, scoring consistency, "
+        "and standard compliance before delivery.\n\n"
+        "Your data is processed in real-time and **not stored** after the report is generated.\n\n"
         "- Do not include patient names or personally identifiable information\n"
         "- Device descriptions are used solely to generate your analysis\n\n"
         "By continuing, you agree to these terms. Contact: medrisk.ai.app@gmail.com"
