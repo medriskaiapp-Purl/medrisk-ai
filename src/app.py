@@ -23,21 +23,50 @@ PURCHASE_URL = os.environ.get(
 )
 MODEL = os.environ.get("CLAUDE_MODEL", "claude-sonnet-4-20250514")
 
-def _valid_license_keys():
-    """Load valid license keys from secrets or env."""
+def _validate_license_key(key):
+    """Validate license key against Lemon Squeezy API. Caches result in session."""
+    if not key:
+        return False
+
+    # Check session cache first (avoid API call on every rerun)
+    cache_key = f"license_valid_{key}"
+    if cache_key in st.session_state:
+        return st.session_state[cache_key]
+
+    # Check local keys (backup / demo)
     try:
-        return set(st.secrets.get("LICENSE_KEYS", "").split(","))
+        local_keys = set(st.secrets.get("LICENSE_KEYS", "").split(","))
     except (KeyError, FileNotFoundError):
-        pass
-    raw = os.environ.get("LICENSE_KEYS", "")
-    return {k.strip() for k in raw.split(",") if k.strip()}
+        local_keys = set()
+    local_keys.update(k.strip() for k in os.environ.get("LICENSE_KEYS", "").split(",") if k.strip())
+    if key in local_keys:
+        st.session_state[cache_key] = True
+        return True
+
+    # Validate against Lemon Squeezy API
+    try:
+        import urllib.request
+        import json
+        data = json.dumps({"license_key": key, "instance_name": "medrisk-ai"}).encode()
+        req = urllib.request.Request(
+            "https://api.lemonsqueezy.com/v1/licenses/validate",
+            data=data,
+            headers={"Content-Type": "application/json", "Accept": "application/json"},
+        )
+        with urllib.request.urlopen(req, timeout=5) as resp:
+            result = json.loads(resp.read())
+            valid = result.get("valid", False)
+            st.session_state[cache_key] = valid
+            return valid
+    except Exception:
+        # If API is down, fall back to local keys only
+        st.session_state[cache_key] = False
+        return False
 
 def is_pro():
     """Check if current session has a valid license key."""
     key = st.session_state.get("license_key", "").strip()
-    if not key:
-        return False
-    return key in _valid_license_keys()
+    return _validate_license_key(key)
 
 # --- Hide Streamlit branding for professional look ---
 st.markdown(
