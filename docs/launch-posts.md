@@ -2,6 +2,13 @@
 
 ## Reddit: r/regulatoryaffairs
 
+### Account setup (do FIRST, 2-3 days before posting):
+1. Create account with neutral username (e.g., meddev_tools, risk_eng, qms_builder)
+2. Do NOT use "medrisk" in username — looks like spam
+3. Browse r/regulatoryaffairs and r/medicaldevices for 2-3 days
+4. Upvote posts, leave 3-5 helpful comments (genuine, not promotional)
+5. THEN post your tool
+
 **Title:** "I built a free tool that generates ISO 14971 risk analyses — looking for feedback from regulatory professionals"
 
 **Body:**
