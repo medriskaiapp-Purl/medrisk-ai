@@ -220,4 +220,69 @@ Then produce:
 - Acceptable (A): [N]
 - Acceptable with justification (A*): [N]
 - Unacceptable (U): [N] — these need additional controls before submission
+
+## GSPR Cross-Reference (if EU market selected)
+Map each risk to the relevant EU MDR 2017/745 Annex I General Safety and Performance Requirement.
+| GSPR | Requirement | Risks |
+|------|-------------|-------|
+Only include GSPRs that are actually addressed by the risks above. Common GSPRs for medical devices:
+- GSPR 1: Devices achieve intended performance and are safe
+- GSPR 4: Transport and storage conditions
+- GSPR 5: Benefits outweigh risks (benefit-risk)
+- GSPR 8: Device and manufacturing process designed to eliminate/reduce risk (risk management)
+- GSPR 9: Devices designed for patient/user safety
+- GSPR 10: Chemical, physical, biological properties
+- GSPR 11: Infection and microbial contamination
+- GSPR 12: Devices with substance considered medicinal product
+- GSPR 14: Devices incorporating electronic systems and software
+- GSPR 17: Biocompatibility and toxicological properties
+- GSPR 18: Radiation (ionizing and non-ionizing)
+- GSPR 21: Protection against mechanical and thermal risks
+- GSPR 22: Protection against risks from energy supply and substances
+
+## Post-Market Monitoring Guidance
+Based on the specific risks identified above, generate a device-specific monitoring plan:
+
+### Complaint Indicators to Track
+For each HIGH-severity risk (S≥3), specify what complaint keywords or patterns would trigger a risk review.
+| Risk | Complaint Indicator | Review Trigger |
+|------|--------------------|--------------  |
+Example: RISK_02 (SpO2 error) → "false reading", "missed alarm" → ≥3 complaints in 6 months
+
+### Literature & Standards Watch
+List specific standards and publications to monitor for updates that could affect this device's risk profile:
+- [List 2-3 specific standards that apply to this device, e.g., "ISO 80601-2-61 amendments"]
+- [List relevant adverse event databases to search, e.g., "FDA MAUDE", "EU EUDAMED"]
+
+### Risk Review Triggers
+State when the risk analysis should be re-evaluated:
+- Design change affecting [list specific subsystems from analysis]
+- ≥3 complaints on any single hazard within 6 months
+- Standard update affecting any cited IEC/ISO reference
+- New clinical evidence on device type or intended use population
+- Post-market clinical follow-up (PMCF) study results available
+
+## Audit Readiness Checklist
+Review the COMPLETE analysis and check each item. Output the results honestly — do NOT mark items as complete if the analysis doesn't cover them.
+
+| # | Check | Status | Detail |
+|---|-------|--------|--------|
+| 1 | All listed subsystems have ≥1 associated risk | [PASS/FAIL] | [which subsystem is missing if FAIL] |
+| 2 | Defense-in-depth (design+protective+info) for all S≥3 risks | [PASS/FAIL] | [which risk is missing a layer] |
+| 3 | Post-control P2/S2 justified for every risk | [PASS/FAIL] | |
+| 4 | Verification criteria are quantitative (instruments + pass/fail) | [PASS/FAIL] | [flag any vague criteria] |
+| 5 | IEC/ISO references cited for every risk | [PASS/FAIL] | |
+| 6 | At least one risk scored A* (realistic, not over-optimistic) | [PASS/FAIL] | |
+| 7 | Risk summary table complete | [PASS/FAIL] | |
+| 8 | Benefit-risk stated for any A* risk | [PASS/FAIL] | [which A* risk lacks justification] |
+
+### What's Still Needed Before Submission
+Based on the checklist above, list what the user must STILL do before submitting to a notified body or FDA:
+- [ ] Create Risk Management Plan (scope, team, acceptability criteria) — MedRisk AI generates the analysis, not the plan
+- [ ] Add device-specific design requirement references (HRS/SRS numbers) to each control
+- [ ] Assign verification to specific test protocols with protocol numbers
+- [ ] Review and customize all AI-generated content with domain-specific knowledge
+- [ ] Add benefit-risk analysis for any A* risks (clinical data required)
+- [ ] Integrate into Risk Management File with traceability matrix
+- [ ] Schedule post-market risk review per monitoring plan above
 """
