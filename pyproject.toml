@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "medrisk-ai"
+version = "0.1.0"
+description = "AI-powered ISO 14971 risk management for medical devices"
+authors = ["MedRisk AI Team"]
+license = "Proprietary"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+streamlit = "^1.45"
+anthropic = "^0.52"
+weasyprint = "^63.0"
+markdown = "^3.7"
+pyyaml = "^6.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0"
+ruff = "^0.9"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 100
