@@ -508,27 +508,18 @@ else:
     st.markdown("**Describe your device above, select subsystems, and click Generate.**")
 
     st.markdown("""
-    #### Why MedRisk AI, not ChatGPT?
-
-    | | ChatGPT / Claude | MedRisk AI |
-    |---|---|---|
-    | **Verification** | None — states numbers without checking | 6-point self-verification (physics, scoring, completeness) |
-    | **Standards** | Whichever you ask for | 12 standards auto-selected based on your device |
-    | **Scoring rules** | Often scores everything "acceptable" | Enforces ISO 14971 post-control rules (P2, S2 justification) |
-    | **Output format** | Different every time | Consistent, auditor-ready, QMS-importable |
-    | **Export** | Copy-paste text | CSV for Excel / Greenlight Guru + Markdown |
-    | **Prompt needed** | You write 30 min of instructions | 2 clicks |
+    | What's included | |
+    |---|---|
+    | ISO 14971 risk analysis (device-specific, not templates) | Included |
+    | 12 standards auto-selected per device | Included |
+    | 6-point self-verification (physics, scoring, completeness) | Included |
+    | GSPR mapping (EU MDR Annex I) | Included |
+    | Audit readiness checklist (8 checks) | Included |
+    | Post-market monitoring plan | Included |
+    | CSV export for Excel / QMS import | Pro |
+    | Markdown report download | Pro |
+    | No prompt writing, no setup needed | Included |
     """)
-
-    with st.expander("What's in each analysis", expanded=False):
-        st.markdown("""
-        - Device-specific hazard identification (not templates)
-        - P x S scoring with post-control justification
-        - Defense-in-depth controls: design > protective > information
-        - Quantitative verification criteria (instruments + pass/fail values)
-        - Multi-standard references (IEC 60601, 62304, 62366, ISO 10993, and 8 more)
-        - 6-point self-verification before delivery
-        """)
 
     with st.expander("FAQ", expanded=False):
         st.markdown(f"""
