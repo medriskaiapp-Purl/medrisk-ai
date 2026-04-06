@@ -159,6 +159,11 @@ def _extract(text, pattern, default=""):
     return m.group(1).strip() if m else default
 
 
+# --- Auto-activate from URL parameter (e.g., ?key=LICENSE_KEY) ---
+_url_key = st.query_params.get("key", "")
+if _url_key and "license_key" not in st.session_state:
+    st.session_state["license_key"] = _url_key
+
 # --- Privacy Consent (first visit) ---
 if "privacy_accepted" not in st.session_state:
     st.session_state.privacy_accepted = False
@@ -380,6 +385,22 @@ api_key = get_api_key()
 # --- Main area ---
 if not api_key:
     st.error("Service is temporarily unavailable. Please try again later.")
+
+# --- Quick license activation (visible in main area for returning buyers) ---
+if not is_pro():
+    with st.expander("Already purchased? Enter your license key here", expanded=False):
+        quick_key = st.text_input(
+            "Paste your license key from the purchase email",
+            type="password",
+            key="quick_license_key",
+        )
+        if quick_key and quick_key.strip():
+            st.session_state["license_key"] = quick_key.strip()
+            if is_pro():
+                st.success("Pro license activated! You now have full access.")
+                st.rerun()
+            else:
+                st.error("Invalid license key. Check your purchase email and try again.")
 
 if st.button("Generate Risk Analysis", type="primary", use_container_width=True):
     if not device_description:
