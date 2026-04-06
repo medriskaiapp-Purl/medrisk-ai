@@ -21,6 +21,7 @@ PURCHASE_URL = os.environ.get(
     "PURCHASE_URL",
     "https://medrisk-ai.lemonsqueezy.com/buy",  # Replace with actual Lemon Squeezy link
 )
+MODEL = os.environ.get("CLAUDE_MODEL", "claude-sonnet-4-20250514")
 
 def _valid_license_keys():
     """Load valid license keys from secrets or env."""
@@ -142,7 +143,8 @@ if not st.session_state.privacy_accepted:
         "- Do NOT include patient names, personal data, or confidential trade secrets in your device description\n"
         "- Device descriptions are used solely to generate your risk analysis\n"
         "- No data is shared with third parties beyond the AI processing\n\n"
-        "By clicking Accept, you agree to these terms."
+        "By clicking Accept, you agree to these terms.\n\n"
+        "Questions? Contact medrisk.ai.app@gmail.com"
     )
     if st.button("Accept and Continue", type="primary"):
         st.session_state.privacy_accepted = True
@@ -355,6 +357,9 @@ if st.button("Generate Risk Analysis", type="primary", use_container_width=True)
 
     if not subsystems:
         st.warning("No subsystems selected — analysis may miss relevant risks.")
+    if len(device_description.split()) < 5:
+        st.error("Please provide more detail about your device (at least a few sentences).")
+        st.stop()
 
     # --- Security: Sanitize input (prompt injection defense) ---
     def _sanitize(text):
@@ -399,7 +404,7 @@ Be specific to THIS device — not generic medical device risks.
 
         with st.spinner(f"Analyzing {device_type.split('(')[0].strip().lower()}... checking {len(subsystems)} subsystems against 12 standards (~60s)"):
             response = client.messages.create(
-                model="claude-sonnet-4-20250514",
+                model=MODEL,
                 max_tokens=16000,
                 system=SYSTEM_PROMPT,
                 messages=[{"role": "user", "content": user_prompt}],
