@@ -19,7 +19,7 @@ st.set_page_config(
 FREE_MAX_RISKS = 5
 PURCHASE_URL = os.environ.get(
     "PURCHASE_URL",
-    "https://medrisk-ai.lemonsqueezy.com/buy",  # Replace with actual Lemon Squeezy link
+    "https://medrisk-ai.lemonsqueezy.com/checkout/buy/b98a9f1e-ae8c-4de0-b847-1c6528d7462f",
 )
 MODEL = os.environ.get("CLAUDE_MODEL", "claude-sonnet-4-20250514")
 
@@ -563,6 +563,6 @@ MedRisk AI was built by medical device professionals who understand both enginee
     st.divider()
     st.markdown(
         f"**Try free** — {FREE_MAX_RISKS} risks, no signup.\n\n"
-        f"**[Pro — £79/report]({PURCHASE_URL})** — up to 25 risks + CSV/Markdown download + full GSPR + audit checklist.\n\n"
-        f"*Risk consultants charge £12,000-40,000 for the same analysis. MedRisk AI: £79, delivered in 60 seconds.*"
+        f"**[Pro — £99/report]({PURCHASE_URL})** — up to 25 risks + CSV/Markdown download + full GSPR + audit checklist.\n\n"
+        f"*Risk consultants charge £12,000-40,000 for the same analysis. MedRisk AI: £99, delivered in 60 seconds.*"
     )
